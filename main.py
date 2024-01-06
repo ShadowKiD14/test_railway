@@ -4,6 +4,7 @@ from telegram import Update, Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from decouple import config
 import functools
+from keep_alive import keep_alive
 
 # Configuration
 TOKEN = config("BOT_TOKEN", default=None, cast=str)
@@ -11,6 +12,8 @@ FORWARD_TO_CHANNELS = config("FORWARD_TO_CHANNELS", default="", cast=str)
 SLEEP_TIME = config("SLEEP_TIME", default=10, cast=int)
 ADMINS = config("ADMIN_IDS", default="")
 ADMIN_IDS = [int(i) for i in ADMINS.split()]
+
+keep_alive()
 
 LINKS_MESSAGE= '''
 ✅🔞 All Channel 🔞✅
